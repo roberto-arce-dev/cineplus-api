@@ -47,4 +47,13 @@ export class EntradaService {
       throw new NotFoundException(`Entrada con ID ${id} no encontrado`);
     }
   }
+  async findByUsuario(usuarioId: string): Promise<Entrada[]> {
+    return this.entradaModel.find({ usuario: usuarioId });
+  }
+  async comprarEntrada(dto: any): Promise<Entrada> {
+    const entrada = await this.entradaModel.create(dto);
+    return entrada;
+  }
+
+
 }

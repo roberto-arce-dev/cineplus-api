@@ -413,6 +413,128 @@
           }
         }
       ]
+    },
+    {
+      "name": "Película",
+      "item": [
+        {
+          "name": "Películas Disponibles",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pelicula/disponibles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pelicula",
+                "disponibles"
+              ]
+            },
+            "description": "Películas en cartelera"
+          },
+          "response": []
+        },
+        {
+          "name": "Películas por Género",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pelicula/genero/{{genero}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pelicula",
+                "genero",
+                "{{genero}}"
+              ]
+            },
+            "description": "Filtrar por género"
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints específicos de Película"
+    },
+    {
+      "name": "Entrada",
+      "item": [
+        {
+          "name": "Mis Entradas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/entrada/usuario/{{usuarioId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "entrada",
+                "usuario",
+                "{{usuarioId}}"
+              ]
+            },
+            "description": "Historial de entradas"
+          },
+          "response": []
+        },
+        {
+          "name": "Comprar Entrada",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/entrada/comprar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "entrada",
+                "comprar"
+              ]
+            },
+            "description": "Comprar entrada",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"usuarioId\": \"{{usuarioId}}\",\n  \"peliculaId\": \"{{peliculaId}}\"\n}"
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Endpoints específicos de Entrada"
     }
   ],
   "variable": [

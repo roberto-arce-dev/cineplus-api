@@ -45,4 +45,12 @@ export class PeliculaService {
       throw new NotFoundException(`Pelicula con ID ${id} no encontrado`);
     }
   }
+  async findDisponibles(): Promise<Pelicula[]> {
+    return this.peliculaModel.find({ disponible: true });
+  }
+  async findByGenero(genero: string): Promise<Pelicula[]> {
+    return this.peliculaModel.find({ genero });
+  }
+
+
 }

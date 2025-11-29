@@ -112,6 +112,20 @@ export class PeliculaController {
     return { success: true, data };
   }
 
+  @Get('disponibles')
+  @ApiOperation({ summary: 'Listar películas disponibles' })
+  async findDisponibles() {
+    const data = await this.peliculaService.findDisponibles();
+    return { success: true, data, total: data.length };
+  }
+
+  @Get('genero/:genero')
+  @ApiOperation({ summary: 'Filtrar películas por género' })
+  async findByGenero(@Param('genero') genero: string) {
+    const data = await this.peliculaService.findByGenero(genero);
+    return { success: true, data, total: data.length };
+  }
+
   @Patch(':id')
   @ApiOperation({ summary: 'Actualizar Pelicula' })
   @ApiParam({ name: 'id', description: 'ID del Pelicula' })

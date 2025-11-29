@@ -112,6 +112,21 @@ export class EntradaController {
     return { success: true, data };
   }
 
+  @Get('usuario/:usuarioId')
+  @ApiOperation({ summary: 'Obtener entradas de un usuario' })
+  async findByUsuario(@Param('usuarioId') usuarioId: string) {
+    const data = await this.entradaService.findByUsuario(usuarioId);
+    return { success: true, data, total: data.length };
+  }
+
+  @Post('comprar')
+  @HttpCode(HttpStatus.CREATED)
+  @ApiOperation({ summary: 'Comprar entrada para película' })
+  async comprarEntrada(@Body() entradaDto: any) {
+    const data = await this.entradaService.comprarEntrada(entradaDto);
+    return { success: true, message: 'Entrada comprada exitosamente', data };
+  }
+
   @Patch(':id')
   @ApiOperation({ summary: 'Actualizar Entrada' })
   @ApiParam({ name: 'id', description: 'ID del Entrada' })
